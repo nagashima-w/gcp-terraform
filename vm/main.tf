@@ -15,6 +15,7 @@ resource "google_compute_instance" "first" {
   boot_disk {
     initialize_params {
       image = "ubuntu-2004-lts" # gcloud compute images list
+      size  = 15
     }
   }
 
@@ -26,3 +27,4 @@ resource "google_compute_instance" "first" {
   }
 
 }
+
