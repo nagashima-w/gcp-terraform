@@ -26,5 +26,6 @@ resource "google_compute_instance" "first" {
     }
   }
 
+  metadata_startup_script = "apt install -y nginx"
 }
 
