@@ -3,31 +3,50 @@ provider "google" {
   region  = "asia-northeast1"
 }
 
-variable machine-type {
-  default = "n1-standard-1"
-}
-
 resource "google_compute_instance" "first" {
   name         = "first-instance"
   machine_type = var.machine-type
-  zone         = "asia-northeast1-b"
+  zone         = var.zone
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-2004-lts" # gcloud compute images list
-      size  = 15
+      image = var.image # gcloud compute images list
+      size  = var.disk-size
     }
   }
 
   network_interface {
-    network = "default"
+    network = var.network
 
     access_config {
     }
   }
 
-  metadata_startup_script = "apt install -y nginx"
+  metadata_startup_script = var.install-nginx
 
-  tags = ["http-server"]
+  tags = var.tag-allow-http
 }
 
+resource "google_compute_instance" "second" {
+  name         = "second-instance"
+  machine_type = var.machine-type
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      image = var.image # gcloud compute images list
+      size  = var.disk-size
+    }
+  }
+
+  network_interface {
+    network = var.network
+
+    access_config {
+    }
+  }
+
+  metadata_startup_script = var.install-nginx
+
+  tags = var.tag-allow-http
+}
