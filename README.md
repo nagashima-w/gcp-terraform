@@ -36,7 +36,11 @@ terraform destroy #リソースの削除
 
 -----
 
-#### 1.7Cloud Load BalancerとCompute Engineを組み合わせて作成してみましょう
+#### 1-7 remote stateを設定してみましょう
+
+- [リファレンス](https://www.terraform.io/docs/state/remote.html)
+
+#### 1.8 Cloud Load BalancerとCompute Engineを組み合わせて作成してみましょう
 
 ※ロードバランサーの部品を作って組み合わせる感じなので、つくるものがたくさんあります
 
